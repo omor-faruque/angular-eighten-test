@@ -1,0 +1,46 @@
+name: Angular CI
+
+# Trigger the workflow on push or pull request events to the main branch
+on:
+    push:
+      branches:
+        - main
+    pull_request:
+      branches:
+        - main
+
+
+# Define the jobs that will run as part of this workflow
+jobs:
+    build:
+  
+      # Runs the job on the latest Ubuntu runner
+      runs-on: ubuntu-latest
+  
+      # Steps define what to do in each job
+      steps:
+        # Checkout the code from the repository
+        - name: Checkout repository
+          uses: actions/checkout@v3
+  
+        # Setup Node.js environment (you can change the version as needed)
+        - name: Setup Node.js
+          uses: actions/setup-node@v3
+          with:
+            node-version: '18.x'
+  
+        # Install Angular CLI globally
+        - name: Install Angular CLI
+          run: npm install -g @angular/cli
+  
+        # Install project dependencies
+        - name: Install dependencies
+          run: npm ci
+  
+        # Run Angular build (This will build your project for production)
+        - name: Build Angular app
+          run: ng build
+  
+        # Run tests (Optional)
+        - name: Run tests
+          run: ng test --watch=false --browsers=ChromeHeadless
