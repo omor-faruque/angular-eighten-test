@@ -8,20 +8,29 @@
 
   <p>Hello {{city}}</p>
 
-  <section><app-user/></section>
+  <section><app-user /></section>
 
-  
-    @if (isServerRunning) {
-      <p>Yes, the server is running</p>
-    }
-    @else {
-      <p>Server Not Running</p>
-    }
-  
-    <button (click)="isServerRunning=!isServerRunning">Toggle Server</button>
 
-    @for (user of users; track user.id) {
-      <p>{{ user.name }}</p>
-    }
+  @if (isServerRunning) {
+  <p>Yes, the server is running</p>
+  }
+  @else {
+  <p>Server Not Running</p>
+  }
+
+  <button (click)="isServerRunning=!isServerRunning">Toggle Server</button>
+
+  @for (user of users; track user.id) {
+  <p>{{ user.name }}</p>
+  }
 
 </main>
+
+<section>
+
+
+  <section (mouseover)="onMouseOver()">
+    There's a secret message for you, hover to reveal:
+    {{ message }}
+  </section>
+</section>
