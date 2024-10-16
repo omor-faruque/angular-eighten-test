@@ -1,8 +1,36 @@
 <main>
   <header class="brand-name">
-    <!-- <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true" /> -->
+    <img class="brand-logo" src="assets/images/logo.png" alt="logo" aria-hidden="true" />
   </header>
   <section class="content">
     <app-home></app-home>
   </section>
+
+  <p>Hello {{city}}</p>
+
+  <section><app-user /></section>
+
+
+  @if (isServerRunning) {
+  <p>Yes, the server is running</p>
+  }
+  @else {
+  <p>Server Not Running</p>
+  }
+
+  <button (click)="isServerRunning=!isServerRunning">Toggle Server</button>
+
+  @for (user of users; track user.id) {
+  <p>{{ user.name }}</p>
+  }
+
 </main>
+
+<section>
+
+
+  <section (mouseover)="onMouseOver()">
+    There's a secret message for you, hover to reveal:
+    {{ message }}
+  </section>
+</section>
